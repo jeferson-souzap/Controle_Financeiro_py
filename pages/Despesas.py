@@ -1,7 +1,7 @@
 import streamlit as st
 import datetime
 
-st.title("Adicionar Lançamentos")
+st.title("Adicionar Despesas")
 
 # Simula categorias existentes
 if "categorias_despesa" not in st.session_state:
@@ -26,18 +26,20 @@ with col4:
     foi_recebida = st.toggle("Foi recebida", value=False)
     recorrente = st.toggle("Despesa Recorrente", value=False)
 
-# Dropdown de categoria
+#Dropdown de categoria
 categoria = st.selectbox("Categoria da despesa", options=st.session_state["categorias_despesa"])
 
 # Expander para categorias
-with st.expander("➕ Adicionar/Remover Categorias"):
+with st.expander("Adicionar/Remover Categorias"):
     st.markdown("### Adicionar categoria")
     nova_categoria = st.text_input("Nova categoria...", key="nova_cat")
     col_add, _ = st.columns([1, 4])
     with col_add:
         if st.button("Adicionar", key="btn_add_cat"):
             if nova_categoria and nova_categoria not in st.session_state["categorias_despesa"]:
+                #Substituir pelo banco de dados
                 st.session_state["categorias_despesa"].append(nova_categoria)
+                
                 st.success(f"Categoria '{nova_categoria}' adicionada.")
             else:
                 st.warning("Categoria inválida ou já existente.")

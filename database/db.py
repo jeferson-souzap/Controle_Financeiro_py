@@ -16,9 +16,21 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS categoria (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
+    grupo TEXT NOT NULL,               
     tipo TEXT CHECK (tipo IN ('entrada', 'saida')) NOT NULL
 )
 """)
+
+
+# Tabela de categorias
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS grupos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL
+)
+""")
+
+
 
 # Tabela de lançamentos
 cursor.execute("""
