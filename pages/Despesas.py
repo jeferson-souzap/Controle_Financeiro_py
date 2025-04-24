@@ -28,7 +28,7 @@ with col4:
 
 #---------------------------------------------------------------------------------
 #Dropdown de categoria
-categoria_db =  obter_categorias_tipo()
+categoria_db =  obter_categorias()
 categoria = st.selectbox("Categoria da despesa", categoria_db)
 
 
